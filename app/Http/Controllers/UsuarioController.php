@@ -64,7 +64,7 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
         $usuario->update($request->all());
 
-        return response()->json(['success' => true, 'message' => 'Usuario actualizado correctamente.']);
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
 
     }
 
@@ -76,6 +76,6 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
         $usuario->delete();
 
-        return response()->json(['success' => true, 'message' => 'Usuario eliminado']);
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado correctamente.');
     }
 }
