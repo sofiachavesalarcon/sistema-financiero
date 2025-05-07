@@ -57,7 +57,7 @@ class PUCController extends Controller
         $puc = PUC::findOrFail($id);
         $puc->update($request->all());
 
-        return response()->json(['success' => true, 'message' => 'Cuenta PUC actualizada correctamente.']);
+        return redirect()->route('puc.index')->with('success', 'PUC actualizado correctamente.');
     }
 
     /**
@@ -67,7 +67,7 @@ class PUCController extends Controller
     {
         $puc = PUC::findOrFail($id);
         $puc->delete();
-
-        return response()->json(['success' => true, 'message' => 'Cuenta PUC eliminada']);
+        return redirect()->route('puc.index')->with('success', 'PUC eliminado correctamente.');
+        
     }
 }
