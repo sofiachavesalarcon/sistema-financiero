@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContrapartidaPUC;
+use App\Models\PUC;
 use Illuminate\Http\Request;
 
 class ContrapartidaPUCController extends Controller
@@ -12,7 +13,9 @@ class ContrapartidaPUCController extends Controller
      */
     public function index()
     {
-        //
+        $contrapartidas = ContrapartidaPUC::with('puc')->get();
+        $pucs = PUC::all();
+        return view('contrapartida_puc.index', compact('contrapartidas', 'puc'));
     }
 
     /**
@@ -28,7 +31,8 @@ class ContrapartidaPUCController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ContrapartidaPUC::create($request->all());
+        return redirect()->route('contrapartida_puc.index')->with('success', 'Contrapartida creada correctamente.');
     }
 
     /**
@@ -50,16 +54,22 @@ class ContrapartidaPUCController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ContrapartidaPUC $contrapartidaPUC)
+    public function update(Request $request, $id)
     {
-        //
+        $contrapartida = ContrapartidaPUC::findOrFail($id);
+        $contrapartida->update($request->all());
+
+        return redirect()->route('contrapartida_puc.index')->with('success', 'Contrapartida actualizada correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ContrapartidaPUC $contrapartidaPUC)
+    public function destroy($id)
     {
-        //
+        $contrapartida = ContrapartidaPUC::findOrFail($id);
+        $contrapartida->delete();
+
+        return redirect()->route('contrapartida_puc.index')->with('success', 'Contrapartida eliminada correctamente.');
     }
 }
