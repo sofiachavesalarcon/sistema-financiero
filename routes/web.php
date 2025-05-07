@@ -5,9 +5,13 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\DepartamentoController;
+<<<<<<< HEAD
+use App\Http\Controllers\PUCController;
+=======
 use App\Http\Controllers\PUCController; 
 use App\Http\Controllers\ContrapartidaPUCController;
 use App\Http\Controllers\ModuloController;
+>>>>>>> fd009913bfbbf1ad87d02a6f402756c4871cc288
 
 Route::get('/', function () {
     return redirect()->route('usuarios.index');
