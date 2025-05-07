@@ -48,7 +48,7 @@
                 <!-- Agrega más ítems según tus rutas -->
                 <li>
                     <a href=""
-                        class="flex items-center p-2 text-green-400 rounded-lg hover:bg-red-100 dark:hover:bg-red-900">
+                        class="flex items-center p-2 text-red-600 rounded-lg hover:bg-red-100 dark:hover:bg-red-900">
                         <span class="ms-3">Cerrar sesión</span>
                     </a>
                 </li>
