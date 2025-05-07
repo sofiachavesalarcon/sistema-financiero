@@ -40,6 +40,7 @@
                                     @csrf @method('DELETE')
                                     <button onclick="return confirm('¿Seguro?')"
                                         class="text-sm text-white bg-red-600 px-2 py-1 rounded hover:bg-red-700">Eliminar</button>
+
                                 </form>
                             </td>
                         </tr>
