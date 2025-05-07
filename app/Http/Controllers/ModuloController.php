@@ -12,7 +12,8 @@ class ModuloController extends Controller
      */
     public function index()
     {
-        //
+        $modulos = Modulo::all();
+        return view('modulos.index', compact('modulos'));
     }
 
     /**
@@ -28,7 +29,8 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Modulo::create($request->all());
+        return redirect()->route('modulos.index')->with('success', 'Modulo creado correctamente.');
     }
 
     /**
@@ -50,16 +52,21 @@ class ModuloController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Modulo $modulo)
+    public function update(Request $request, $id)
     {
-        //
+        $modulos = Modelo::findOrFail($id);
+        $modulos->update($request->all());
+
+        return redirect()->route('modulos.index')->with('success', 'Modelo actualizado correctamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Modulo $modulo)
+    public function destroy($id)
     {
-        //
+        $modulos = Modelo::findOrFail($id);
+        $modulos->delete();
+        return redirect()->route('modulos.index')->with('success', 'Modulo eliminado correctamente.');
     }
 }
