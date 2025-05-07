@@ -12,7 +12,8 @@ class PUCController extends Controller
      */
     public function index()
     {
-        //
+        $pucs = PUC::all();
+        return view('puc.index', compact('pucs'));
     }
 
     /**
@@ -28,7 +29,8 @@ class PUCController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        PUC::create($request->all());
+        return redirect()->route('puc.index')->with('success', 'Cuenta PUC creada correctamente.');
     }
 
     /**
@@ -52,7 +54,10 @@ class PUCController extends Controller
      */
     public function update(Request $request, PUC $pUC)
     {
-        //
+        $puc = PUC::findOrFail($id);
+        $puc->update($request->all());
+
+        return response()->json(['success' => true, 'message' => 'Cuenta PUC actualizada correctamente.']);
     }
 
     /**
@@ -60,6 +65,9 @@ class PUCController extends Controller
      */
     public function destroy(PUC $pUC)
     {
-        //
+        $puc = PUC::findOrFail($id);
+        $puc->delete();
+
+        return response()->json(['success' => true, 'message' => 'Cuenta PUC eliminada']);
     }
 }
