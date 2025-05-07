@@ -5,7 +5,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\MunicipioController;
 use App\Http\Controllers\DepartamentoController;
-use App\Http\Controllers\PUCController; 
+use App\Http\Controllers\PUCController;
 
 Route::get('/', function () {
     return redirect()->route('usuarios.index');
